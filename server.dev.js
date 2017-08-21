@@ -8,6 +8,8 @@ const webpackConfig = require('./config/webpack.config.dev.js')
 const app = express()
 const compiler = webpack(webpackConfig)
 
+//routers
+const testRouter = require('./src/routers/test-router');
 
 //Static content
 app.use(express.static(__dirname+'/public'))
@@ -27,6 +29,7 @@ app.use(webpackHotMiddleware(compiler, {
     heartbeat: 10 * 1000,
 }))
 
+app.use('/test',testRouter);
 
 app.all('/**',(req,res) => res.sendFile(__dirname + '/public/views/index.html'))
 app.listen(process.env.PORT);

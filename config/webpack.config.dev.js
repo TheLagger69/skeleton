@@ -1,10 +1,9 @@
 const path = require('path')
-const Dotenv = require('dotenv-webpack')
 
 module.exports = {
   context: path.join(__dirname, '../src'),
   entry: [
-    './components/root.js',
+    './root.js',
   ],
   output: {
     path: path.join(__dirname, '../public/js'),
@@ -60,11 +59,5 @@ module.exports = {
     modules: [
       path.join(__dirname, '../node_modules'),
     ],
-  },
-  plugins: [
-    new Dotenv({
-      path: './env',
-      safe: true
-    })
-  ]
+  }
 }
